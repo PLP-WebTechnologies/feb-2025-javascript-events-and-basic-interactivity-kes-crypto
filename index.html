@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Webpage</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #555;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: #28a745;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #218838;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        input, select {
+            margin: 5px 0;
+            padding: 8px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: white;
+            margin-top: 20px;
+        }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            main {
+                width: 90%;
+            }
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Interactive Webpage</h1>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+</nav>
+
+<main>
+    <div class="container">
+        <h2>JavaScript Interaction</h2>
+        <p id="text-content">Click the button to change this text.</p>
+        <button id="changeTextBtn">Change Text</button>
+
+        <h2>Dynamic Form</h2>
+        <form id="registrationForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter a password" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required>
+
+            <label>Gender:</label>
+            <input type="radio" name="gender" value="Male" required> Male
+            <input type="radio" name="gender" value="Female" required> Female
+
+            <label for="subscription">Newsletter Subscription:</label>
+            <input type="checkbox" id="subscription"> Subscribe
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p id="formMessage" class="hidden"></p>
+    </div>
+</main>
+
+<footer>
+    <p>Contact us at: example@email.com</p>
+</footer>
+
+<script>
+    // Change text content on button click
+    document.getElementById("changeTextBtn").addEventListener("click", function() {
+        document.getElementById("text-content").textContent = "The text has been changed!";
+    });
+
+    // Form validation and submission handling
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form from submitting
+
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let password = document.getElementById("password").value.trim();
+        let dob = document.getElementById("dob").value;
+
+        if (name === "" || email === "" || password === "" || dob === "") {
+            alert("Please fill in all fields!");
+            return;
+        }
+
+        document.getElementById("formMessage").textContent = "Registration successful!";
+        document.getElementById("formMessage").classList.remove("hidden");
+        this.reset(); // Reset form
+    });
+</script>
+
+</body>
+</html>
